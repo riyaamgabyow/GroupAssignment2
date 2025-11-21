@@ -1,0 +1,62 @@
+/*
+* @file DataTypeCard.h
+* Defines the cards suit and rank 
+* Initializes print card and compare functions
+* @Author Bartley Crummy
+* @Date 21/11/2025
+*/
+
+#pragma once
+
+/*
+* @enum Suit
+* Represents the 4 suits in a standard deck of cards
+*/
+
+enum class Suit {
+	Club,
+	Spade,
+	Heart,
+	Diamond
+};
+
+/*
+*@enum Rank
+* Represents the rank of the card
+*/
+enum class Rank {
+	One,
+	Two,
+	Three,
+	Four,
+	Five,
+	Six,
+	Seven,
+	Eight,
+	Nine,
+	Ten,
+	Jack,
+	Queen,
+	King,
+	Ace
+};
+
+/*
+* @struct Card
+* Represents the rank and suit of the card
+*/
+struct Card {
+	Rank rank;
+	Suit suit;
+};
+
+/*
+* Defines the code that will print a card in readable form
+*/
+void printCard(const Card& card);
+
+/*
+* Defines the code that will compare two cards and return which one is larger 
+*/
+int compareCards(const Card& a, const Card& b);
+
