@@ -1,0 +1,54 @@
+/*
+* Contains the code for the printCard and compare Card functions
+* @Author Bartley Crummy
+* @Date 21/11/2025
+*/
+
+
+#include "DataTypeCard.h"
+#include <iostream> 
+/*
+* Array of suit names.
+*/
+static const char* suitNames[] = { "Spades", "Clubs", "Hearts", "Diamonds" 
+};
+
+/*
+* Array of card ranks.
+*/
+static const char* rankNames[] = {"Two", "Three", "Four", "Five", "Six", "Seven", "Eight",
+"Nine", "Ten", "Jack", "Queen", "King", "Ace"
+};
+
+/*
+* @brief prints the card in the format (rank) of (suit).
+* Converts the values of the suit and rank in enum to a readable string.
+*/
+void printCard(const Card& card)
+{
+	std::cout << rankNames [static_cast<int>(card.rank)]
+		<< "of"
+		<< suitNames [static_cast<int>(card.suit)]
+		<< std::endl;
+}           
+
+/*
+* @brief Compares two cards
+* Compares by rank first, if equal it will compare suit
+* @param a, First card
+* @param b, Second card
+* @return, -1 if card A is less than card B.
+*           0 if the cards are equal.
+*           1 if card A is greater than card B.
+*/
+
+int compareCards(const Card& a, const Card& b)
+{
+	if (a.rank < b.rank) return -1;
+	if (a.rank > b.rank) return 1;
+
+	if (a.suit < b.suit) return -1;
+	if (a.suit > b.suit) return 1;
+
+	return 0;
+}
