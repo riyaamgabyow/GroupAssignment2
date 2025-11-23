@@ -6,7 +6,7 @@
 
 
 #include "DataTypeCard.h"
-#include <iostream> 
+#include <stdio.h> 
 /*
 * Array of suit names.
 */
@@ -26,10 +26,11 @@ static const char* rankNames[] = {"Two", "Three", "Four", "Five", "Six", "Seven"
 */
 void printCard(const Card& card)
 {
-	std::cout << rankNames [static_cast<int>(card.rank)]
-		<< "of"
-		<< suitNames [static_cast<int>(card.suit)]
-		<< std::endl;
+	if (!card) return;
+
+    printf("%s of %s\n",
+        rankNames[(int)card->rank],
+        suitNames[(int)card->suit]);
 }           
 
 /*
@@ -44,11 +45,13 @@ void printCard(const Card& card)
 
 int compareCards(const Card& a, const Card& b)
 {
-	if (a.rank < b.rank) return -1;
-	if (a.rank > b.rank) return 1;
+if (!a || !b) return 0;
 
-	if (a.suit < b.suit) return -1;
-	if (a.suit > b.suit) return 1;
+    if (a->rank < b->rank) return -1;
+    if (a->rank > b->rank) return 1;
 
-	return 0;
+    if (a->suit < b->suit) return -1;
+    if (a->suit > b->suit) return 1;
+
+    return 0;
 }
