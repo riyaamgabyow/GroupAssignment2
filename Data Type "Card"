@@ -6,25 +6,26 @@
 * @Date 21/11/2025
 */
 
-#pragma once
+#ifndef DATATYPECARD_H
+#define DATATYPECARD_H
 
 /*
 * @enum Suit
 * Represents the 4 suits in a standard deck of cards
 */
 
-enum class Suit {
+typedef enum {
 	Club,
 	Spade,
 	Heart,
 	Diamond
-};
+} Suit;
 
 /*
 *@enum Rank
 * Represents the rank of the card
 */
-enum class Rank {
+typedef enum {
 	One,
 	Two,
 	Three,
@@ -39,16 +40,16 @@ enum class Rank {
 	Queen,
 	King,
 	Ace
-};
+} Rank;
 
 /*
 * @struct Card
 * Represents the rank and suit of the card
 */
-struct Card {
+typedef struct {
 	Rank rank;
 	Suit suit;
-};
+} Card;
 
 /*
 * Defines the code that will print a card in readable form
@@ -59,4 +60,6 @@ void printCard(const Card& card);
 * Defines the code that will compare two cards and return which one is larger 
 */
 int compareCards(const Card& a, const Card& b);
+
+#endif
 
