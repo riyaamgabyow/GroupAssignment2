@@ -1,34 +1,33 @@
-#pragma once
-#include "Card.h"
-#include <string>
+#ifndef CARDDECK_H
+#define CARDDECK_H
 
-class CardDeck {
-private:
+#include "Card.h"
+
+typedef struct {
     Card* cards;
     int size;
     int capacity;
-    void resize(int newCapacity);
+} CardDeck;
 
-public:
-    CardDeck();
-    CardDeck(int numPacks);
-    CardDeck(const CardDeck& other);
-    CardDeck& operator=(const CardDeck& other);
-    ~CardDeck();
+void CardDeck_init(CardDeck* deck);
+void CardDeck_initWithPacks(CardDeck* deck, int numPacks);
+void CardDeck_copy(const CardDeck* src, CardDeck* dest);
+void CardDeck_cleanup(CardDeck* deck);
 
-    int getSize() const;
-    bool isEmpty() const;
-    void addCardToTop(const Card& card);
-    Card removeCardFromTop();
-    Card removeCardAtIndex(int index);
-    Card getCardAtIndex(int index) const;
+int CardDeck_getSize(const CardDeck* deck);
+int CardDeck_isEmpty(const CardDeck* deck);
+void CardDeck_addCardToTop(CardDeck* deck, Card card);
+Card CardDeck_removeCardFromTop(CardDeck* deck);
+Card CardDeck_removeCardAtIndex(CardDeck* deck, int index);
+Card CardDeck_getCardAtIndex(const CardDeck* deck, int index);
 
-    void shuffle();
-    void sort();
-    void addStandardPack();
-};
+void CardDeck_shuffle(CardDeck* deck);
+void CardDeck_sort(CardDeck* deck);
+void CardDeck_addStandardPack(CardDeck* deck);
 
-bool compareCards(const Card& a, const Card& b);
-std::string cardToString(const Card& card);
-std::string suitToString(Suit suit);
-std::string rankToString(Rank rank);
+int compareCards(const Card* a, const Card* b);
+const char* cardToString(Card card);
+const char* suitToString(Suit suit);
+const char* rankToString(Rank rank);
+
+#endif

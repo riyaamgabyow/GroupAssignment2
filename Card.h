@@ -1,13 +1,14 @@
-#pragma once
+#ifndef CARD_H
+#define CARD_H
 
-enum class Suit {
+typedef enum {
     CLUB,
-    SPADE,
+    SPADE,  
     HEART,
     DIAMOND
-};
+} Suit;
 
-enum class Rank {
+typedef enum {
     TWO,
     THREE,
     FOUR,
@@ -21,13 +22,11 @@ enum class Rank {
     QUEEN,
     KING,
     ACE
-};
+} Rank;
 
-struct Card {
+typedef struct {
     Suit suit;
     Rank rank;
+} Card;
 
-    Card() : suit(Suit::CLUB), rank(Rank::TWO) {}
-
-    Card(Suit s, Rank r) : suit(s), rank(r) {}
-};
+#endif
